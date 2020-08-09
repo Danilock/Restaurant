@@ -1,0 +1,9 @@
+<%- layout('layouts/main.ejs') %>
+<div class="card" style="width: 18rem;">
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item"><%= transactions[0]._id %></li>
+    <li class="list-group-item"><%= transactions[0].dish %></li>
+    <li class="list-group-item"><%= transactions[0].amount %></li>
+    <li class="list-group-item"><%= transactions[0].date %></li>
+  </ul>
+</div>

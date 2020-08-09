@@ -1,0 +1,96 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Login</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body background="https://wallpapercave.com/wp/wp1874156.jpg">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <div>
+        <a class="navbar-brand" href="/">Home</a>
+        <button
+          class="navbar-toggler"
+          type="button"
+          data-toggle="collapse"
+          data-target="#navbarNav"
+          aria-controls="navbarNav"
+          aria-expanded="false"
+          aria-label="Toggle navigation"
+        >
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </div>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ml-auto">
+          <%if(!user){%>
+          <li class="nav-item active">
+            <a class="nav-link" href="/signin"
+              >SigIn <span class="sr-only">(current)</span></a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/signup">SignUp</a>
+          </li>
+          <%} else {%>
+          <li class="nav-item bg-secondary">
+            <a class="nav-link" href="/transactions/my">Debts</a>
+          </li>
+          <li class="nav-item bg-primary">
+            <a class="nav-link" href="/profile"><%- user.name %></a>
+          </li>
+          <%if(user.accountType == 'Admin'){%>
+
+          <li class="nav-item">
+            <a class="nav-link bg-warning text-dark" href="/transactions"
+              >Transactions</a
+            >
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/food">Add Dish</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/newAdmin">New User</a>
+          </li>
+          <%}%>
+          <li class="nav-item">
+            <a class="nav-link bg-danger" href="/logout">Log Out</a>
+          </li>
+          <%}%>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container">
+      <%if(signupMessage.length > 0){%>
+      <div class="alert alert-danger"><%= signupMessage%></div>
+      <%}%> <%if(signinMessage.length > 0){%>
+      <div class="alert alert-danger"><%= signinMessage%></div>
+      <%}%> <%- body %>
+    </div>
+  </body>
+
+  <% if(user){ %>
+  <script>
+    window.watsonAssistantChatOptions = {
+      integrationID: "9dfe0bc0-d08d-480e-8497-2ec20fe387c0", // The ID of this integration.
+      region: "us-south", // The region your integration is hosted in.
+      serviceInstanceID: "39f6b9a5-2e57-43b0-97ba-b573a10e5993", // The ID of your service instance.
+      onLoad: function (instance) {
+        instance.render();
+      },
+    };
+    setTimeout(function () {
+      const t = document.createElement("script");
+      t.src =
+        "https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+      document.head.appendChild(t);
+    });
+  </script>
+  <%}%>
+</html>

@@ -1,0 +1,49 @@
+<%- layout('layouts/main.ejs'); %>
+<div class="container">
+  <div class="row mt-4">
+    <%for(var i = 0; i < foods.length; i++) {%>
+    <div class="col-md-auto mb-4">
+      <div class="card" style="width: 18rem;">
+        <img
+          class="card-img-top"
+          style="height: 200px;"
+          src="<%= foods[i].imageURL%>"
+          alt="Card image
+            cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= foods[i].title%>
+          </h5>
+          <h3>US$<%= foods[i].price%></h3>
+          <p class="card-text">
+            <%= foods[i].description%>
+          </p>
+          <% if(user) {%>
+          <form
+            id="<%= foods[i]._id%>"
+            action="/checkout/<%= foods[i]._id%>"
+            method="POST"
+          >
+            <script
+              src="https://checkout.stripe.com/checkout.js"
+              class="stripe-button"
+              data-key="pk_test_MCo5BBlYs1h50GT0n47o2xu700GpXZULuP"
+              data-amount="<%= foods[i].price * 100%>"
+              data-name="<%= foods[i].title%>"
+              data-description="Buy Food Process"
+              data-image="<%= foods[i].imageURL%>"
+              data-locale="auto"
+            ></script>
+          </form>
+          <a href="#" class="btn btn-warning">Buy with LocoCoins</a>
+          <a href="/checkout/fiao/<%= foods[i]._id%>" class="btn btn-success"
+            >Fiao</a
+          >
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% } %>
+  </div>
+</div>

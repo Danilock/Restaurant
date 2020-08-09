@@ -1,0 +1,57 @@
+<%- layout('layouts/main.ejs') %>
+<form action="/food/addFood" method="POST">
+  <div class="row">
+    <div class="col-md-4 offset-md-4 text-center mt-4">
+      <div class="card">
+        <div class="card-header">
+          <h3>Creating Food</h3>
+        </div>
+        <div class="card-body">
+            <div class="form-group">
+              <input
+                class="form-control"
+                type="text"
+                name="imageURL"
+                placeholder="URL Image"
+                required
+              />
+            </div>
+        <div class="card-body">
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              name="foodTitle"
+              placeholder="Dish Title"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="text"
+              name="foodDescription"
+              placeholder="Dish Description"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <input
+              class="form-control"
+              type="number"
+              name="foodPrice"
+              placeholder="US$ Price"
+              required
+            />
+          </div>
+          <div class="form-group">
+            <button class="btn btn-primary btn-block" type="submit">
+              Save Food
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</form>
+

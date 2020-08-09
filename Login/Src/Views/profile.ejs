@@ -1,0 +1,26 @@
+<%- layout('layouts/main.ejs') %>
+<h1 class="bg-info text-center text-warning">Profile</h1>
+
+<div class="card">
+  <div class="card-header">
+    <h3><%= user.name %> <%= user.lastName %></h3>
+  </div>
+  <div class="card-body">
+    <blockquote class="blockquote mb-0">
+      <ul class="list-group list-group-flush">
+        <li class="list-group-item">
+          <h3>Email</h3>
+          <%= user.email%>
+        </li>
+        <li class="list-group-item">
+          <h3>Password</h3>
+          <%= user.password%>
+        </li>
+        <li class="list-group-item">
+          <h3>User ID</h3>
+          <%= user._id%>
+        </li>
+      </ul>
+    </blockquote>
+  </div>
+</div>

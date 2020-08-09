@@ -1,0 +1,46 @@
+<%- layout('layouts/main.ejs') %>
+<div class="container">
+  <div class="row mt-4">
+    <% for(var i = 0; i < purchases.length; i ++) {%>
+    <div class="col-md-auto mb-4 text-center">
+      <div
+        class="card <%= purchases[i].status ? 'bg-success' : 'bg-danger'%>"
+        style="width: 18rem;"
+      >
+        <img
+          class="card-img-top"
+          style="height: 200px;"
+          src="<%= purchases[i].imageURL%>"
+          alt="Card image cap"
+        />
+        <div class="card-body">
+          <h5 class="card-title">
+            <%= purchases[i].dish%> (US$<%= purchases[i].amount%>.00)
+          </h5>
+          <p class="card-text">
+            <%= purchases[i].date%>
+          </p>
+          <% if(purchases[i].status == false) {%>
+          <form
+            id="<%= purchases[i]._id%>"
+            action="/checkout/payDebt/<%= purchases[i]._id%>"
+            method="POST"
+          >
+            <script
+              src="https://checkout.stripe.com/checkout.js"
+              class="stripe-button"
+              data-key="pk_test_MCo5BBlYs1h50GT0n47o2xu700GpXZULuP"
+              data-amount="<%= purchases[i].amount * 100%>"
+              data-name="<%= purchases[i].dish%>"
+              data-description="Buy Food Process"
+              data-image="<%= purchases[i].imageURL%>"
+              data-locale="auto"
+            ></script>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+    <% }%>
+  </div>
+</div>

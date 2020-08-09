@@ -1,0 +1,21 @@
+<%- layout('layouts/main.ejs') %>
+<div class="row">
+  <div class="col-md-4 offset-md-4 text-center mt-4">
+    <div class="card" style="width: 18rem;">
+      <img
+        class="card-img-top"
+        src="<%= food.imageURL%>"
+        alt="Card image cap"
+      />
+      <div class="card-body">
+        <h5 class="card-title"><%= food.title%> (US$<%= food.price%>.00)</h5>
+        <p class="card-text">
+          <%= food.description%>
+        </p>
+        <form action="/checkout/fiao/<%= food._id %>" method="POST">
+          <button type="submit" class="btn btn-success">Confirm</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

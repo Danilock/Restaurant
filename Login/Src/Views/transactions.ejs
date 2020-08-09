@@ -1,0 +1,53 @@
+<%- layout('layouts/main.ejs') %>
+<div class="container">
+  <div class="d-flex justify-content-center bg-danger">
+    <h2 class="d-inline text-warning">Transactions</h2>
+  </div>
+  <div class="row d-flex justify-content-center">
+    <!--List-->
+    <div class="col-md-7">
+      <table class="table table-bordered table-hover bg-white">
+        <thead>
+          <tr>
+            <th>N</th>
+            <th>Product Name</th>
+            <th>Amount</th>
+            <th>User</th>
+            <th>Email</th>
+            <th>Date</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody>
+          <%for(var i = 0; i < transactions.length; i++) { %>
+          <tr
+            class="<%= transactions[i].status ? 'bg-success' : 'bg-warning'%>"
+          >
+            <td>
+              <%= i + 1%>
+            </td>
+            <td>
+              <%= transactions[i].dish%>
+            </td>
+            <td>
+              US$<%= transactions[i].amount%>.00
+            </td>
+            <td>
+              <%= transactions[i].user%>
+            </td>
+            <td>
+              <%= transactions[i].email%>
+            </td>
+            <td>
+              <%= transactions[i].date%>
+            </td>
+            <td>
+              <%= transactions[i].status ? 'Paid out' : 'Debt'%>
+            </td>
+          </tr>
+          <% } %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
