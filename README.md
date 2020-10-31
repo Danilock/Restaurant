@@ -1,2 +1,2 @@
 # Restaurant
-Restaurant... oh yeah.
+Restaurant app with Stripe.
